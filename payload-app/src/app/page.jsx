@@ -2,8 +2,16 @@
 import { AddItemForm } from "@/ui/AddItemForm";
 
 export default async function Home() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_PAYLOADURL}/api/items`);
-  const Items = await response.json();
+  let Items;
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_PAYLOADURL}/api/items`
+    );
+    Items = await response.json();
+  } catch (error) {
+    console.error(error);
+    return <div>Failed to Fetch! 404</div>;
+  }
 
   return (
     <>
