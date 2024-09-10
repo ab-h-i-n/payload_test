@@ -3,7 +3,7 @@
 export function AddItemForm() {
   const addItem = async (itemName) => {
     try {
-      const response = await fetch('http://localhost:4000/api/items', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_PAYLOADURL}/api/items`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
